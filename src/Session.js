@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function Session(session) {
-  const { data } = session;
+  const { data, selectData, movie } = session;
   const showTimes = data.showtimes;
   return (
     <>
@@ -10,7 +10,7 @@ export default function Session(session) {
       </div>
       <div class="times">
         {showTimes.map((time) => (
-          <Link to={`/assentos/${time.id}`} class="time">
+          <Link to={`/assentos/${time.id}`} class="time" onClick={() => selectData(movie, data.date, time.name)}>
             {time.name}
           </Link>
         ))}
