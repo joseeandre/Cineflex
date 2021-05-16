@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function Success(props) {
-  const { name, cpf, order, data } = props;
+  const { name, cpf, order, data, resetData } = props;
 
   return (
     <>
@@ -18,7 +18,7 @@ export default function Success(props) {
         <div class="title">Nome: {name}</div>
         <div class="title">CPF: {cpf}</div>
       </div>
-      <Link to="/" class="booking">Voltar pra home</Link>
+      <Link to="/" class="booking" onClick={resetData}>Voltar pra home</Link>
     </>
   );
 }

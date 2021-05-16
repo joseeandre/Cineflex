@@ -16,11 +16,18 @@ function App() {
   const [cpf, setCpf] = useState("");
 
   function sendData() {
-      const idArray = [];
-      order.forEach((element) => {idArray.push(element.id)});
-      const params = {ids: idArray, name: name, cpf: cpf};
-      const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many";
-      axios.post(url, params);
+    const idArray = [];
+    order.forEach((element) => {
+      idArray.push(element.id);
+    });
+    const params = { ids: idArray, name: name, cpf: cpf };
+    const url =
+      "https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many";
+    axios.post(url, params);
+  }
+
+  function resetData() {
+    setOrder([]);
   }
 
   function selectData(movie, date, time) {
@@ -53,13 +60,14 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
-            <HomePage />
+            <HomePage key="" />
           </Route>
           <Route path="/sessoes/:idMovie" exact>
-            <Days selectData={selectData} />
+            <Days key="" selectData={selectData} />
           </Route>
           <Route path="/assentos/:idSession" exact>
             <Seats
+              key=""
               selectSeat={selectSeat}
               isSelected={isSelected}
               setName={setName}
@@ -68,7 +76,14 @@ function App() {
             />
           </Route>
           <Route path="/sucesso" exact>
-            <Success name={name} cpf={cpf} order={order} data={data} />
+            <Success
+              key=""
+              name={name}
+              cpf={cpf}
+              order={order}
+              data={data}
+              resetData={resetData}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
